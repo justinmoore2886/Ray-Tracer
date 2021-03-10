@@ -1,0 +1,122 @@
+#materials 6
+#lights 2
+#objects 11
+
+camera_eye 1.6 1.8 6
+camera_lookat 0 0 0
+camera_vup 0 1 0
+
+material red_plastic
+material_type phong
+ambient   0.4 0 0
+diffuse   1 0 0
+specular  0.3 0.3 0.3
+shininess 6
+
+material green_plastic
+material_type phong
+ambient   0 0.4 0
+diffuse   0 1 0
+specular  0.3 0.3 0.3
+shininess 6
+
+material blue_plastic
+material_type phong
+ambient   0 0 0.4
+diffuse   0 0 1
+specular  0.3 0.3 0.3
+shininess 6
+
+material yellow_plastic
+material_type phong
+ambient   0.4 0.4 0
+diffuse   1 1 0
+specular  0.3 0.3 0.3
+shininess 6
+
+material magenta_plastic
+material_type phong
+ambient   0.4 0 0.4
+diffuse   1 0 1
+specular  0.3 0.3 0.3
+shininess 6
+
+material glass
+material_type specular
+index 1.1
+tau 0.4 0.3 0.3
+rho 0.5 0.6 0.5
+color 0.1 0.2 0.1
+
+light top_right_light
+color    1 0.6 0.6
+position 10 10 10
+
+light bottom_left_light
+color    0.6 1 0.6
+position -10 -10 10
+
+triangle red_square_1
+vertex -2 -2 +2
+vertex -2 +2 -2
+vertex -2 +2 +2
+material red_plastic
+
+triangle red_square_2
+vertex -2 -2 +2
+vertex -2 -2 -2
+vertex -2 +2 -2
+material red_plastic
+
+triangle green_square_1
+vertex +2 +2 +2
+vertex +2 +2 -2
+vertex +2 -2 +2
+material green_plastic
+
+triangle green_square_2
+vertex +2 -2 +2
+vertex +2 +2 -2
+vertex +2 -2 -2
+material green_plastic
+
+triangle blue_square_1
+vertex -2 +2 +2
+vertex +2 +2 -2
+vertex +2 +2 +2
+material blue_plastic
+
+triangle blue_square_2
+vertex -2 +2 +2
+vertex -2 +2 -2
+vertex +2 +2 -2
+material blue_plastic
+
+triangle yellow_square_1
+vertex -2 -2 +2
+vertex +2 -2 -2
+vertex -2 -2 -2
+material yellow_plastic
+
+triangle yellow_square_2
+vertex -2 -2 +2
+vertex +2 -2 +2
+vertex +2 -2 -2
+material yellow_plastic
+
+triangle magenta_square_1
+vertex -2 -2 -2
+vertex +2 -2 -2
+vertex -2 +2 -2
+material magenta_plastic
+
+triangle magenta_square_2
+vertex -2 +2 -2
+vertex +2 -2 -2
+vertex +2 +2 -2
+material magenta_plastic
+
+sphere glass_ball
+center 0 0 0
+radius 1.5
+material glass

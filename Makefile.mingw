@@ -1,0 +1,32 @@
+CC = gcc
+CXX = g++ std=c++14
+
+INCLUDES = -I$(glad_inc)
+LIBRARIES = 
+
+source_dir = .
+
+glad_inc = $(source_dir)/deps
+
+CFLAGS = -Wall -ggdb -O3 $(INCLUDES)
+CXXFLAGS = -Wall -ggdb -O3 $(INCLUDES)
+
+LDFLAGS = $(LIBRARIES) -lglfw3dll -lopengl32
+
+TARGET = rt.exe
+cpp_files = rt.cpp Camera.cpp GeomLib.cpp Hit.cpp HitList.cpp \
+            Color.cpp Light.cpp Object.cpp Sphere.cpp Triangle.cpp \
+            KBUI.cpp Material.cpp
+c_files = deps/glad.c
+objects = $(cpp_files:.cpp=.o) $(c_files:.c=.o)
+headers =
+
+all: $(TARGET)
+
+$(TARGET): $(objects) 
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+.PHONY : clean
+clean :
+	-rm $(TARGET) $(objects)
+

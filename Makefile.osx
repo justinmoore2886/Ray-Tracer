@@ -1,0 +1,32 @@
+CC = gcc
+CXX = g++ -std=c++14
+
+INCLUDES = -I$(glad_inc) -I/usr/local/include
+LIBRARIES = 
+
+source_dir = .
+
+glad_inc = $(source_dir)/deps
+
+CFLAGS = -Wall -ggdb -O3 $(INCLUDES)
+CXXFLAGS = -Wall -ggdb -O3 $(INCLUDES)
+LDFLAGS = $(LIBRARIES) -L/usr/local/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+
+TARGET1 = rt
+cpp_files1 = rt.cpp Camera.cpp GeomLib.cpp Hit.cpp HitList.cpp \
+             Color.cpp Light.cpp Object.cpp Sphere.cpp Triangle.cpp \
+             KBUI.cpp Material.cpp Tokenizer.cpp
+
+c_files = deps/glad.c
+
+objects1 = $(cpp_files1:.cpp=.o) $(c_files:.c=.o)
+
+all: $(TARGET1)
+
+$(TARGET1): $(objects1) 
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+.PHONY : clean
+clean:
+	rm -f $(TARGET1) $(objects1)
+
